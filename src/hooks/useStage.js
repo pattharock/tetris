@@ -21,10 +21,13 @@ export const useStage = (player, resetPlayer) => {
         });
       });
 
+      if (player.collided) {
+        resetPlayer();
+      }
       return newStage;
     };
-
     setStage((previousState) => updateStage(previousState));
-  }, [player]);
+  }, [player, resetPlayer]);
+
   return [stage, setStage];
 };
